@@ -78,16 +78,8 @@
         padding: 1rem 3rem;
     }
 
-    .contact__main-container {
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: center;
-    }
-
-    .contact__left-container, .contact__right-container {
+    .contact__container {
         padding: 0;
-        margin: 1rem 0;
-        width: 100%;
     }
 
     /* HOME */
@@ -103,5 +95,12 @@
     /* BLOGS */
     .blogpost-list__container {
         grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 400px) {
+    .nav__logo-container ,
+    .nav__link-container {
+        margin: 0 auto;
     }
 }
