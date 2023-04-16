@@ -1,0 +1,24 @@
+{
+  "name": "mi-blog",
+  "version": "1.0.0",
+  "description": "Generic blog project for my portfolio ",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joelspi97/MI-blog.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joelspi97/MI-blog/issues"
+  },
+  "homepage": "https://github.com/joelspi97/MI-blog#readme",
+  "dependencies": {
+    "ejs": "^3.1.9",
+    "express": "^4.18.2"
+  }
+}
