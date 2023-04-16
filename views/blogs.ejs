@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('./partials/head.ejs') %>
+
+<body>
+  <%- include('./partials/header.ejs') %>
+
+    <main class="blogs-main">
+      <section class="hero-blogpost">
+        <div class="hero-blogpost__container container">
+          <div>
+            <h3>News</h3>
+            <img class="hero-blogpost__image" src="./assets/img/cover_909cd27f-8eb3-4e9a-9cae-c5549009f6b5.png"
+              alt="Imagen del blogpost principal">
+          </div>
+          <div>
+            <h1>Blogpost title</h1>
+            <p>
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quia iure saepe maxime illum officiis
+              ut provident dolorem magnam quibusdam quam, at dolorum eligendi corporis quas quasi asperiores
+              et molestias possimus.
+            </p>
+            <a href="/blog">Read more <span class="sr-only">about post number 1</span></a>
+          </div>
+        </div>
+      </section>
+      <section class="blogpost-list">
+        <div class="container">
+          <h3 id="blogpost-list__title">Latest blogposts</h3>
+          <div class="blogpost-list__container">
+            <% blogs.forEach(blog => { %>
+              <article>
+                <img src="./assets/img/<%= blog.imageUrl %>"
+                  alt="<%= blog.imageAltText %>">
+                <h3><%= blog.title %></h3>
+                <p><%= blog.abstract %></p>
+                <a href="/blog">Read more <span class="sr-only">about <%= blog.title %></span></a>
+              </article>
+            <% }) %>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <%- include('./partials/footer.ejs') %>
+</body>
+
+</html>
