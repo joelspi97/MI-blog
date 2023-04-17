@@ -24,7 +24,7 @@
             <% } %>
             <h3><%= blog.title %></h3>
             <p><%= blog.abstract %></p>
-            <a href="blogs/blog">Read more <span class="sr-only">about <%= blog.title %></span></a>
+            <a href="blogs/<%= blog.id %>">Read more <span class="sr-only">about <%= blog.title %></span></a>
           </article>
         <% }) %>
       </div>

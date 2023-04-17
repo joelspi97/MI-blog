@@ -21,14 +21,27 @@ router.post('/', async (req, res) => {
 
   try {
     const newBlog = await blog.save();
-    res.render('blogs/selectedBlog', { title: 'Selected blog' });
+    res.render('blogs/selectedBlog', { 
+      title: 'Selected blog', 
+      blog: newBlog
+    });
   } catch (err) {
     res.redirect('blogs');
   }
 });
 
-router.get('/blog', (req, res) => {
-  res.render('blogs/selectedBlog', { title: 'Selected blog', blog: { title: 'Título hardcodeado', body: 'Body hardcodeado' } });
+router.get('/:id', async (req, res) => {
+  const id = req.params.id;
+
+  try {
+    const selectedBlog = await Blog.findById(id);
+    res.render('blogs/selectedBlog', { 
+      title: selectedBlog.title, 
+      blog: selectedBlog
+    });
+  } catch (err) {
+    console.error(err);
+  }
 });
 
 module.exports = router;
