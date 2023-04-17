@@ -1,0 +1,72 @@
+<main class="blogs-main">
+  <section class="hero-blogpost">
+    <div class="hero-blogpost__container container">
+      <div>
+        <img class="hero-blogpost__image" src="/assets/img/post-3.png" alt="Close up picture of the hands of a person typing on a laptop.">
+      </div>
+      <div>
+        <h1>Create your own Blogpost!</h1>
+        <p>Take the chance and share your opinions with others. Your blog is going to be stored on our database and every user is going to be able to read it.</p>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#formModal">Create Blogpost</button>
+      </div>
+    </div>
+  </section>
+  <section class="blogpost-list">
+    <div class="container">
+      <h3 id="blogpost-list__title">Latest blogposts</h3>
+      <div class="blogpost-list__container">
+        <% blogs.forEach(blog => { %>
+          <article>
+            <% if (blog.imageUrl != null) { %>
+              <img src="/assets/img/<%= blog.imageUrl %>" alt="<%= blog.imageAltText %>">
+            <% } else { %>
+              <img src="/assets/img/no-preview.svg" alt="">
+            <% } %>
+            <h3><%= blog.title %></h3>
+            <p><%= blog.abstract %></p>
+            <a href="blogs/blog">Read more <span class="sr-only">about <%= blog.title %></span></a>
+          </article>
+        <% }) %>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- Modal -->
+<div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <form class="modal-content" action="/blogs" method="POST">
+      <div class="modal-header">
+        <h5 class="modal-title" id="formModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h6><i>Fields with an asterisk (*) are required.</i></h6>
+        <div>
+          <label for="title">Title*</label>
+          <input type="text" name="title" id="title">
+        </div>
+        <div>
+          <label for="abstract">Abstract*</label>
+          <input type="text" name="abstract" id="abstract">
+        </div>
+        <div>
+          <label for="blogBody">Body*</label>
+          <textarea name="blogBody" id="blogBody"></textarea>
+        </div>
+        <div>
+          <label for="imageUrl">Image</label>
+          <textarea name="imageUrl" id="imageUrl"></textarea>
+        </div>
+        <div>
+          <label for="imageAltText">Image alternative text</label>
+          <textarea name="imageAltText" id="imageAltText"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save changes</button>
+      </div>
+    </form>
+  </div>
+</div>

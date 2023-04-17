@@ -278,13 +278,23 @@ footer a {
   margin: 2rem 0 3rem;
 }
 
-.blogs-main a {
+.blogs-main a,
+.blogs-main button {
   background-color: white;
-  padding: 1rem;
   border: 0.2rem solid var(--primary-color-darker);
+  border-radius: 0.2rem;
+  color: var(--project-black);
+  font-size: 1.5rem;
+  padding: 1rem;
 }
 
-.blogs-main a:hover {
+.blogs-main a:hover,
+.blogs-main button:hover,
+.blogs-main button:active,
+.blogs-main button:focus {
+  background-color: white;
+  border-color: var(--primary-color-darker);
+  color: var(--project-black);
   text-decoration: underline;
 }
 
@@ -309,7 +319,9 @@ footer a {
 }
 
 .blogpost-list article {
-  padding: 0 3rem;
+  border: 0.1rem solid var(--primary-color-darker);
+  border-radius: 0.2rem;
+  padding: 0 3rem 3rem;
 }
 
 .blogpost-list__container {
@@ -321,10 +333,12 @@ footer a {
 }
 
 .blogpost-list__container img {
+  margin-bottom: 0.5rem;
   width: 100%;
 }
 
 #blogpost-list__title {
+  font-size: 2.4rem;
   text-align: center;
   padding-bottom: 2rem;
   margin-bottom: 2.5rem;
