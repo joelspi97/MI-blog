@@ -28,7 +28,7 @@ router.post('/', async (req, res) => {
 });
 
 router.get('/blog', (req, res) => {
-  res.render('blogs/selectedBlog', { title: 'Selected blog' });
+  res.render('blogs/selectedBlog', { title: 'Selected blog', blog: { title: 'Título hardcodeado', body: 'Body hardcodeado' } });
 });
 
 module.exports = router;
