@@ -1,8 +1,6 @@
 # MI Blog
 This is a project made just for fun and practice.
 
-MI Blog is a generic blog website. It consists of a fully responsive static layout that follows the Web Content Accessibility Guidelines (WCAG) 2.1.
-
 It features:
 * A CRUD system, to allow users interact with a database.
 * A form with validation logic, to avoid sending incorrect data to the database. 
