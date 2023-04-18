@@ -6,6 +6,7 @@ const express = require('express');
 const app = express();
 
 const expressLayouts = require('express-ejs-layouts');
+const favicon = require('express-favicon');
 const bodyParser = require('body-parser');
 const blogsRouter = require('./routes/blogs.js');
 const indexRouter = require('./routes/index.js');
@@ -16,6 +17,7 @@ app.set('views', __dirname + '/views');
 app.set('layout', 'layouts/layout'); 
 
 app.use(express.static('public'));
+app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(expressLayouts);
 app.use(bodyParser.urlencoded({ limit: '10mb', extended: false }));
 app.use('/blogs', blogsRouter);
