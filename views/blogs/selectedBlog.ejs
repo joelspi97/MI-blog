@@ -16,19 +16,40 @@
   <section class="contact">
     <div class="contact__main-container container">
       <div class="contact__container">
-        <img src="/assets/img/013-newsletter_a1023c3e-defc-4af7-8010-9172411f135f.png" alt="">
-        <div>
-          <a aria-describedby="message-description" href="#">Send a message</a>
-          <p id="message-description">Reach out to the author of this blog and start a chat with them!</p>
-        </div>
+        <button type="button" onclick="deleteBlog()">Delete!</button>
+        <button type="button" data-bs-toggle="modal" data-bs-target="#formModal">Edit?</button>
       </div>
       <div class="contact__container">
         <img src="/assets/img/006-like_cb942990-375a-4533-afe7-e9bb567ff7ab.png" alt="">
         <div>
-          <a aria-describedby="link-description" href="#">Share this blog</a>
+          <button type="button" aria-describedby="link-description" onclick="copyUrl()">Share this blog</button>
           <p id="share-description">Copy the link address of this blog to share it with others!</p>
         </div>
       </div>
     </div>
   </section>
+
+  <div id="blog-id" class="visually-hidden" aria-hidden="true"><%= blog.id %></div>
+
+  <script>
+    const blogId = document.getElementById('blog-id').innerText;
+
+    async function deleteBlog() {
+      try {
+        await fetch(`/blogs/${blogId}`, { method: 'DELETE' });
+        window.location.href = '/blogs?success=Blog+successfully+deleted';
+      } catch (err) {
+        console.error(err);
+      }
+    }
+
+    async function copyUrl() {
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        alert('Link copied successfully!');
+      } catch(err) {
+        console.error(err);
+      }
+    }
+  </script>
 </main>

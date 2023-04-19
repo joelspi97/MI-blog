@@ -1,0 +1,82 @@
+<% if (locals.blog) { %>
+  <div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <form action="/blogs" class="modal-content" id="blog-form" data-blog-id="<%= blog.id %>">
+        <div class="modal-header">
+          <h5 class="modal-title" id="formModalLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <h6><i>Fields with an asterisk (*) are required.</i></h6>
+          <div>
+            <label for="title">Title*</label>
+            <input type="text" name="title" id="title" value="<%= blog.title %>">
+          </div>
+          <div>
+            <label for="abstract">Abstract*</label>
+            <input type="text" name="abstract" id="abstract" value="<%= blog.abstract %>">
+          </div>
+          <div>
+            <label for="blogBody">Body*</label>
+            <textarea name="blogBody" id="blogBody"><%= blog.blogBody %></textarea>
+          </div>
+          <div>
+            <label for="imageUrl">Image</label>
+            <textarea name="imageUrl" id="imageUrl"></textarea>
+          </div>
+          <div>
+            <label for="imageAltText">Image alternative text</label>
+            <input type="text" name="imageAltText" id="imageAltText" value="<%= blog.imageAltText %>"></input>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Save changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const blogForm = document.getElementById('blog-form');
+    
+    blogForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const blogId = blogForm.getAttribute('data-blog-id');
+      
+      if (blogId) {
+        const formValues = {};
+        formValues.id = blogId;
+        formValues.title = document.getElementById('title').value; //keys
+        formValues.abstract = document.getElementById('abstract').value;
+        formValues.blogBody = document.getElementById('blogBody').value;
+        formValues.imageAltText = document.getElementById('imageAltText').value;
+
+        fetch('/blogs', { 
+          method: 'PUT',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(formValues)
+        })
+          .then(response => {
+            if (response.status === 200) {
+              alert('Blog post successfully edited!');
+              document.location.reload();
+            } else {
+              alert('An error has occurred. Please, try again later.');
+              throw new Error('An error has occurred. Please, try again later.');
+            }
+          })
+          .catch((err) => {
+            console.error(err);
+          });
+
+      } else {
+        blogForm.setAttribute('method', 'POST');
+        blogForm.submit();
+      }
+    });
+  </script>
+<% } %>
