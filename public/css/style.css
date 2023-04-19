@@ -47,7 +47,7 @@ body {
   flex-direction: column;
   font-size: 1.5rem;
   font-family: var(--primary-font);
-  height: 100%;
+  min-height: 100%;
 }
 
 h1,
@@ -89,6 +89,21 @@ textarea:focus-visible {
   position: absolute !important;
   white-space: nowrap;
   width: 1px !important;
+}
+
+.project-simple-link {
+  display: inline-block;
+  font-size: 1.6rem;
+  font-weight: 500;
+  padding: 0.5rem;
+  text-decoration: underline;
+  white-space: nowrap;
+}
+
+.project-simple-link:focus,
+.project-simple-link:hover {
+  color: var(--dark-blue);
+  text-decoration-color: var(--dark-blue);
 }
 
 .project-button {
@@ -180,25 +195,13 @@ nav {
   padding: 1.5rem 5rem;
 }
 
-.nav__link--logo {
+.nav__link-logo {
   flex: 0 1 2rem;
 }
 
-.nav__link--logo img {
+.nav__link-logo img {
   min-width: 20rem;
   width: 50%;
-}
-
-.nav__link--about-me {
-  font-size: 1.6rem;
-  text-decoration: underline;
-  white-space: nowrap;
-}
-
-.nav__link--about-me:focus,
-.nav__link--about-me:hover {
-  color: var(--dark-blue);
-  text-decoration-color: var(--dark-blue);
 }
 
 
@@ -238,10 +241,7 @@ footer a:focus-visible {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  display: grid;
-  grid-template-columns: 1fr 4fr 1fr;
-  height: 100%;
-  width: 100%;
+  flex: 1;
 }
 
 .home-main section {
@@ -515,22 +515,30 @@ footer a:focus-visible {
 /* SELECTED BLOG */
 .selected-blog-main {
   display: flex;
+  flex: 1;
   flex-direction: column;
   height: 100%;
 }
 
-.selected-blog-main__heading {
+.selected-blog-main__back-link-container {
   border-bottom: 0.1rem solid var(--grey);
   margin: 3rem 5rem 1rem;
 }
 
 .selected-blog__main-content {
   display: flex;
+  flex-wrap: wrap-reverse;
+  gap: 3rem;
+  height: 100%;
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: 150rem;
   padding: 1rem 5rem;
+  width: 100%;
 }
 
 .selected-blog__text-container h1 {
-  margin: 3rem 0;
+  margin-bottom: 3rem;
 }
 
 .selected-blog__text-container p {
@@ -538,12 +546,14 @@ footer a:focus-visible {
   line-height: 2.4rem;
 }
 
+.selected-blog__text-container,
 .selected-blog__image-container {
-  margin: 3rem auto;
-  max-width: 90%;
+  flex: 1;
 }
 
 .selected-blog__image-container img {
+  height: 100%;
+  object-fit: cover;
   width: 100%;
 }
 
