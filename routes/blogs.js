@@ -5,7 +5,11 @@ const Blog = require('../models/blog');
 router.get('/', async (req, res) => {
   try {
     const blogs = await Blog.find({});
-    res.render('blogs/blogs', { title: 'All blogs', blogs, blog: { title: '', abstract: '', blogBody: '', imageAltText: '' } });
+    res.render('blogs/blogs', { 
+      title: 'All blogs', 
+      blogs, 
+      blog: { title: '', abstract: '', blogBody: '', imageAltText: '' }
+    });
   } catch (error) {
     res.redirect('/');
   }
@@ -37,7 +41,7 @@ router.put('/', async (req, res) => {
     }, { new: true });
     
     if (!updatedBlog) {
-      return res.status(404).json({ error: 'Blog not found' });
+      return res.status(404).json({ error: 'Blogpost not found' });
     }
 
     res.status(200).end();

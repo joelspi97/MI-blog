@@ -1,45 +1,63 @@
-<main class="blog-main">
-  <section class="blog__image-container">
-    <% if (locals.blog.imageUrl != null) { %>
-      <img src="/assets/img/<%= blog.imageUrl %>" alt="<%= blog.imageAltText %>">
-    <% } else { %>
-      <img src="/assets/img/no-preview.svg" alt="">
-    <% } %>
-  </section>
+<main class="selected-blog-main">
+  <h3 class="selected-blog-main__heading">News</h3>
+  <section class="selected-blog__main-content">
+    <div class="selected-blog__text-container container">
+      <h1><%= blog.title %></h1>
+      <p><%= blog.blogBody %></p>
+    </div>
 
-  <section class="blog__text-container container">
-    <h3>News</h3>
-    <h1><%= blog.title %></h1>
-    <p><%= blog.blogBody %></p>
+    <div class="selected-blog__image-container">
+      <% if (locals.blog.imageUrl !=null) { %>
+        <img src="/assets/img/<%= blog.imageUrl %>" alt="<%= blog.imageAltText %>">
+      <% } else { %>
+        <img src="/assets/img/no-preview.svg" alt="">
+      <% } %>
+    </div>
   </section>
 
   <section class="contact">
-    <div class="contact__main-container container">
-      <div class="contact__container">
-        <button type="button" onclick="deleteBlog()">Delete!</button>
-        <button type="button" data-bs-toggle="modal" data-bs-target="#formModal">Edit?</button>
-      </div>
-      <div class="contact__container">
+    <div class="contact__main-container">
+      <div class="contact__container contact__container--share">
         <img src="/assets/img/006-like_cb942990-375a-4533-afe7-e9bb567ff7ab.png" alt="">
         <div>
-          <button type="button" aria-describedby="link-description" onclick="copyUrl()">Share this blog</button>
+          <button class="project-button" type="button" aria-describedby="link-description" onclick="copyUrl()">Share this blog</button>
           <p id="share-description">Copy the link address of this blog to share it with others!</p>
+        </div>
+      </div>
+
+      <div class="contact__container contact__container--crud">
+        <h3>Danger zone</h3>
+
+        <div class="d-flex flex-column flex-sm-row gap-5">
+          <div class="contact__button-container">
+            <p>Wanna modify this blogpost?</p>
+            <button class="project-button" type="button" data-bs-toggle="modal" data-bs-target="#formModal" aria-label="Open modal to edit current blogpost.">Edit it 🛠️</button>
+          </div>
+         
+          <div class="contact__button-container">
+            <p>You don't like it?</p>
+            <button class="project-button" type="button" onclick="deleteBlog()" aria-label="Delete current blogpost.">Delete it! 💥</button>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <div id="blog-id" class="visually-hidden" aria-hidden="true"><%= blog.id %></div>
+  <div id="blog-id" class="visually-hidden" aria-hidden="true">
+    <%= blog.id %>
+  </div>
 
   <script>
     const blogId = document.getElementById('blog-id').innerText;
 
     async function deleteBlog() {
-      try {
-        await fetch(`/blogs/${blogId}`, { method: 'DELETE' });
-        window.location.href = '/blogs?success=Blog+successfully+deleted';
-      } catch (err) {
-        console.error(err);
+      if (confirm('Are you sure you want to delete this blogpost?')) {
+        try {
+          await fetch(`/blogs/${blogId}`, { method: 'DELETE' });
+          window.location.href = '/blogs?success=Blogpost+successfully+deleted';
+        } catch (err) {
+          console.error(err);
+        }
       }
     }
 
@@ -47,7 +65,7 @@
       try {
         await navigator.clipboard.writeText(window.location.href);
         alert('Link copied successfully!');
-      } catch(err) {
+      } catch (err) {
         console.error(err);
       }
     }

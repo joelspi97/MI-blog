@@ -1,42 +1,63 @@
 <main class="blogs-main">
-  <section class="hero-blogpost">
-    <div class="hero-blogpost__container container">
-      <div>
-        <img class="hero-blogpost__image" src="/assets/img/post-3.png" alt="Close up picture of the hands of a person typing on a laptop.">
-      </div>
-      <div>
+  <section class="hero-section">
+    <div class="hero-section__container">
+      <img class="hero-section__image" src="/assets/img/post-3.png"
+        alt="Close up picture of the hands of a person typing on a laptop.">
+      <div class="hero-section__text-container">
         <h1>Create your own Blogpost!</h1>
         <p>Take the chance and share your opinions with others. Your blog is going to be stored on our database and every user is going to be able to read it!</p>
-        <p>Keep in mind this is a "free for all" anonymous blog, which means that you can delete or edit other users' blogs if you want to, and someone else could do the same with yours 😈.</p>
-        <button type="button" data-bs-toggle="modal" data-bs-target="#formModal">Create Blogpost</button>
+        <p>Keep in mind this is a "free for all" anonymous blog, which means that you can delete or edit other users' blogs if you want to, and others could do the same with yours 👀.</p>
+        <button class="project-button" type="button" data-bs-toggle="modal" data-bs-target="#formModal" aria-label="Open modal to create a new blogpost.">Create Blogpost</button>
       </div>
     </div>
   </section>
+
   <section class="blogpost-list">
-    <div class="container">
-      <h3 id="blogpost-list__title">Latest blogposts</h3>
-      <label for="search-input">Search for specific blogposts by title! 🔎</label>
-      <input type="text" id="search-input" />
-      <div class="blogpost-list__container">
-        <% if (blogs.length > 0) { %>
-          <% blogs.forEach(blog => { %>
-            <article>
-              <% if (blog.imageUrl != null) { %>
-                <img src="/assets/img/<%= blog.imageUrl %>" alt="<%= blog.imageAltText %>">
+    <h3 id="blogpost-list__title">Latest blogposts</h3>
+
+    <% if (blogs.length> 0) { %>
+      <!-- Seach input -->
+      <form action="/blogs" method="GET" class="blogpost-list__search-bar">
+        <label for="search-input">Search for specific blogposts by title!</label>
+        <div class="blogpost-list__search-input-container">
+          <input type="text" id="search-input" />
+          <button class="project-continue-button" type="submit">Search 🔎</button>
+        </div>
+      </form>
+      <!-- /Seach input -->
+
+
+      <!-- Blogposts list -->
+      <div class="blogpost-list__blogs-container">
+        <% blogs.forEach(blog=> { %>
+          <article>
+            <% if (blog.imageUrl !=null) { %>
+              <img src="/assets/img/<%= blog.imageUrl %>" alt="<%= blog.imageAltText %>">
               <% } else { %>
                 <img src="/assets/img/no-preview.svg" alt="">
-              <% } %>
-              <h3><%= blog.title %></h3>
-              <p><%= blog.abstract %></p>
-              <a href="blogs/<%= blog.id %>">Read more <span class="sr-only">about <%= blog.title %></span></a>
-            </article>
+                <% } %>
+                  <h3>
+                    <%= blog.title %>
+                  </h3>
+                  <p>
+                    <%= blog.abstract %>
+                  </p>
+                  <a class="project-button" href="blogs/<%= blog.id %>">Read more <span class="sr-only">about <%=
+                        blog.title %></span></a>
+          </article>
           <% }) %>
-        <% } else { %>
-          <div>There are no blogposts to show as of yet. Take the lead and make the first one! 😃</div>
-        <% } %>
       </div>
-    </div>
+      <% } %>
+        <!-- /Blogposts list -->
   </section>
+
+  <% if (blogs.length===0) { %>
+    <div class="blogs__no-items-yet">
+      <b>There are no blogposts to show as of yet.</b>
+      <br />
+      Take the lead and make the first one! 😃
+    </div>
+    <% } %>
 </main>
 
 <script>
