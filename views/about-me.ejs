@@ -1,43 +1,38 @@
 <main>
-  <section class="about-me">
-    <div class="about-me__container container">
-      <div>
-        <img src="./assets/img/profile-picture.jpg" alt="Picture of Joel, the creator of M I Blog. He is programming on his laptop.">
-      </div>
-      <div>
-        <h2 class="fw-bold">Hello!</h2>
+  <section class="hero-section">
+    <div class="hero-section__container project-container">
+      <img class="hero-section__image about-me__picture" src="/assets/img/profile-picture.jpg" alt="Picture of Joel Spinelli, the creator of M I Blog. He is programming on his laptop.">
+
+      <div class="hero-section__text-container">
+        <h1>Hello there!</h1>
         <p>My name is Joel, and I'm a full stack web developer. I'm the guy who coded this website 👍. Since I'm not very photogenic I've been reusing this picture for various projects and my LinkedIn profile 🙂.</p>
         <p>In case you are curious, you can check out the code of this site by following <a class="text-primary" rel="noopener" target="_blank" href="https://github.com/joelspi97/MI-blog" title="Visit this project's Github repository" aria-label="Visit this project's Github repository.">this link!</a></p>
-        <div>
-        </div>
       </div>
     </div>
   </section>
 
-  <section class="profile-projects">
-    <div class="container">
-      <h2 class="fw-bold">Random facts about MI Blog</h2>
-      
-      <div class="profile-projects__container">
-        <article class="project-container">
-          <h3>What's the purpose of this website?</h3>
-          <p>This was one of my very first web development projects. It used to be just an HTML and CSS layout I made when making my first steps into programming. <b>Originally, it had no JavaScript at all.</b></p> 
-          <p>It's been almost 2 years since that point and I wanted to update my portfolio and make a project to practice and showcase my NodeJS and Express skills. Since MI Blog already had a decent looking UI interface, I decided to update it and add a little more of complexity by giving it a back-end server.</p>
-        </article>
+  <section class="about-me__facts-section project-container">
+    <h2 class="fw-bold">Random facts about MI Blog</h2>
+    
+    <div class="about-me__facts-container">
+      <article class="about-me__fact">
+        <h3>What's the purpose of this website?</h3>
+        <p>This was one of my very first web development projects. It used to be just an HTML and CSS layout I made when making my first steps into programming. <b>Originally, it had no JavaScript at all.</b></p> 
+        <p>It's been almost 2 years since that point and I wanted to update my portfolio and make a project to practice and showcase my NodeJS and Express skills. Since MI Blog already had a decent looking UI interface, I decided to update it and add a little more of complexity by giving it a back-end server.</p>
+      </article>
 
-        <article class="project-container">
-          <h3>Why is it called MI Blog?</h3>
-          <p>This project was originally written in Spanish, but since I wanted it to reach a wider audience, I decided to fully translate it to English. The thing is that the logo already contained those words and since it's an image, I could not change it that easily.</p>
-          <p>I decided to keep the word "mi" (which in Spanish means "my") in capital letters so that it would look as if it was some sort of abbreviation.</p> 
-          <p><i>Basically; let the users imagine that "M.I." is some kind of cool tech thing they are not aware of, so I can keep it the way it is xd.</i></p>
-        </article>
+      <article class="about-me__fact">
+        <h3>Why is it called MI Blog?</h3>
+        <p>This project was originally written in Spanish, but since I wanted it to reach a wider audience, I decided to fully translate it to English. The thing is that the logo already contained those words and since it's an image, I could not change it that easily.</p>
+        <p>I decided to keep the word "mi" (which in Spanish means "my") in capital letters so that it would look as if it was some sort of abbreviation.</p> 
+        <p><i>Basically; let the users imagine that "M.I." is some kind of cool tech thing they are not aware of, so I can keep it the way it is xd.</i></p>
+      </article>
 
-        <article class="project-container">
-          <h3>What's next?</h3>
-          <p>I'm currently working on a new project for my portfolio. One with a more <i>fancy</i> front end, and a more <b>complex</b> back end.</p>
-          <p>That means, instead of just using vanilla JavaScript, HTML and CSS, for the front end, I'm using React and TypeScript, and instead of having a simple CRUD on the back end, it will also have user authentication.</p>
-        </article>
-      </div>
+      <article class="about-me__fact">
+        <h3>What's next?</h3>
+        <p>I'm currently working on a new project for my portfolio. One with a more <i>fancy</i> front end, and a more <b>complex</b> back end.</p>
+        <p>That means, instead of just using vanilla JavaScript, HTML and CSS, for the front end, I'm using React and TypeScript, and instead of having a simple CRUD on the back end, it will also have user authentication.</p>
+      </article>
     </div>
   </section>
 </main>

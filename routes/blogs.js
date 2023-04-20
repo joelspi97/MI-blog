@@ -56,12 +56,14 @@ router.get('/:id', async (req, res) => {
 
   try {
     const selectedBlog = await Blog.findById(id);
+
     res.render('blogs/selectedBlog', { 
       title: selectedBlog.title, 
       blog: selectedBlog
     });
   } catch (err) {
     console.error(err);
+    res.redirect('/page-not-found');
   }
 });
 

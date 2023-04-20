@@ -29,9 +29,9 @@ app.use(express.json());
 // /Middleware 
 
 // Routes 
+app.use('/', indexRouter);
 app.use('/blogs', blogsRouter);
 app.use('/about-me', aboutMeRouter);
-app.use('/', indexRouter);
 app.use((req, res) => {
   res.status(404);
   res.render('page-not-found', { title: 'Page Not Found' });

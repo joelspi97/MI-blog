@@ -75,9 +75,9 @@ textarea:focus-visible {
   outline: 0.125rem solid var(--dark-green);
 }
 
-.container {
+.project-container {
   margin: auto;
-  max-width: 98rem;
+  max-width: 110rem;
 }
 
 .sr-only {
@@ -146,6 +146,34 @@ textarea:focus-visible {
 
 .project-continue-button:focus-visible {
   outline-color: #ffffff;
+}
+
+.hero-section {
+  background-color: var(--grey);
+  font-size: 1.7rem;
+  margin-bottom: 2rem;
+  padding: 3rem 5rem;
+  width: 100%;
+}
+
+.hero-section__container {
+  align-items: center;
+  column-gap: 6rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  row-gap: 2rem;
+}
+
+.hero-section__image {
+  height: 100%;
+  object-fit: cover;
+  object-position: bottom;
+  width: 100%;
+}
+
+.hero-section__text-container p {
+  margin: 2rem 0 3rem;
 }
 
 
@@ -268,83 +296,42 @@ footer a:focus-visible {
 }
 
 
-/* PROFILE */
-.about-me {
-  background-color: var(--grey);
+/* ABOUT-ME */
+.about-me__picture {
+  object-position: center;
+  width: 80%;
+}
+
+.about-me__facts-section {
   margin-bottom: 5rem;
-  padding: 7rem 4rem;
-  width: 100%;
+  padding: 0 5rem;
 }
 
-.about-me__container {
-  align-items: center;
-  display: flex;
-  font-size: 1.7rem;
-}
-
-.about-me__container img {
-  margin-right: 3rem;
-  width: 50rem;
-}
-
-.about-me__container h2 {
-  margin-bottom: 2rem;
-}
-
-.profile-projects {
-  padding-bottom: 5rem;
-}
-
-.profile-projects h2 {
+.about-me__facts-section h2 {
   border-bottom: 0.1rem solid var(--grey);
-  margin-bottom: 3.5rem;
-  padding-bottom: 3.5rem;
+  margin-bottom: 2.5rem;
+  padding-bottom: 2.5rem;
   text-align: center;
 }
 
-.profile-projects__container {
+.about-me__facts-container {
   display: grid;
+  gap: 3rem;
   grid-template-columns: 1fr 1fr 1fr;
 }
 
-.project-container {
-  padding: 1.5rem;
-}
-
-.project-container h3 {
+.about-me__fact h3 {
   margin-bottom: 2rem;
 }
-
 
 /* BLOGS */
 .blogs-main p {
   margin: 2rem 0 3rem;
 }
 
-.hero-section {
-  background-color: var(--grey);
-  font-size: 1.7rem;
-  margin-bottom: 2rem;
-  padding: 3rem 5rem;
-  width: 100%;
-}
-
-.hero-section__container {
-  align-items: center;
-  column-gap: 6rem;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  row-gap: 2rem;
-}
-
-.hero-section__image {
-  height: 100%;
-  object-fit: cover;
-  object-position: bottom;
-  width: 100%;
-}
-
 .blogpost-list {
+  margin: 0 auto;
+  max-width: 120rem;
   padding: 0 5rem;
 }
 
