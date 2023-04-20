@@ -2,19 +2,14 @@ const express = require('express');
 const router = express.Router();
 const Blog = require('../models/blog');
 
-function escapeRegex(str) {
-  const regexChars = ['\\', '.', '*', '+', '?', '|', '(', ')', '[', ']', '{', '}', '^', '$'];
-
-  return str.split('').map(char => regexChars.includes(char) ? '\\' + char : char).join('');
-}
-
+const REGEX_CHARS = ['\\', '.', '*', '+', '?', '|', '(', ')', '[', ']', '{', '}', '^', '$']; // Special characters for regex  
 
 router.get('/', async (req, res) => {
   let searchOptions = {};
   
   if (req.query.search) {
-    const regexChars = ['\\', '.', '*', '+', '?', '|', '(', ')', '[', ']', '{', '}', '^', '$']; // Escape special characters for regex  
-    const userSearch = req.query.search.split('').map(char => regexChars.includes(char) ? '\\' + char : char).join('');
+    // Escape special characters so that they don't affect searching on the database 
+    const userSearch = req.query.search.split('').map(char => REGEX_CHARS.includes(char) ? '\\' + char : char).join(''); 
     searchOptions.title = { $regex: userSearch, $options: "i" };
   }
 
@@ -23,7 +18,7 @@ router.get('/', async (req, res) => {
     res.render('blogs/blogs', { 
       title: 'All blogs', 
       blogs, 
-      blog: { title: '', abstract: '', blogBody: '', imageAltText: '' },
+      blog: {},
       searchQuery: req.query.search 
     });
   } catch (error) {
