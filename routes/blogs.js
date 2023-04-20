@@ -18,7 +18,7 @@ router.get('/', async (req, res) => {
     res.render('blogs/blogs', { 
       title: 'All blogs', 
       blogs, 
-      blog: {},
+      blog: {}, // Necessary to open blogForm modal 
       searchQuery: req.query.search 
     });
   } catch (error) {
