@@ -11,16 +11,16 @@
           <!-- Inputs -->
           <div class="modal-body">
             <div class="formModal__input-container">
-              <label for="title">Title<span class="formModal__asterisk">*</span></label>
-              <input type="text" name="title" id="title" value="<%= blog.title %>">
+              <label for="title">Title <span class="formModal__asterisk">*</span></label>
+              <input required class="text-field-check-required text-field-check-max" type="text" name="title" id="title" value="<%= blog.title %>">
             </div>
             <div class="formModal__input-container">
-              <label for="abstract">Abstract<span class="formModal__asterisk">*</span></label>
-              <input type="text" name="abstract" id="abstract" value="<%= blog.abstract %>">
+              <label for="abstract">Abstract <span class="formModal__asterisk">*</span></label>
+              <input required class="text-field-check-required text-field-check-max" type="text" name="abstract" id="abstract" value="<%= blog.abstract %>">
             </div>
             <div class="formModal__input-container">
-              <label for="blogBody">Body<span class="formModal__asterisk">*</span></label>
-              <textarea rows="3" name="blogBody" id="blogBody"><%= blog.blogBody %></textarea>
+              <label for="blogBody">Body <span class="formModal__asterisk">*</span></label>
+              <textarea required class="text-field-check-required" rows="3" name="blogBody" id="blogBody"><%= blog.blogBody %></textarea>
             </div>
             <div class="formModal__input-container">
               <label for="imageUrl">Image</label>
@@ -38,7 +38,7 @@
           <!-- Buttons -->
           <div class="modal-footer">
             <button type="button" class="project-button modal__button" data-bs-dismiss="modal">Close</button>
-            <button type="submit" class="project-continue-button modal__button">Save changes</button>
+            <button type="submit" class="project-continue-button modal__button" id="submit-button">Save changes</button>
           </div>
           <!-- /Buttons -->
         </form>
@@ -48,46 +48,111 @@
 
   <script>
     const blogForm = document.getElementById('blog-form');
-   
-    blogForm.addEventListener('submit', (e) => {
+    
+    // Form Validation - check max characters 
+    let isMaxErrorVisible = false;
+
+    function checkMaxCharacters() {
+      if (this.value.length >= 15 && !isMaxErrorVisible) {
+        const RED = '#b50000';
+
+        this.style.borderColor = RED;
+        this.style.outlineColor = RED;
+
+        const errorMessage = document.createElement('div');
+        errorMessage.setAttribute('aria-live', 'assertive');
+        errorMessage.style.bottom = '-2rem';
+        errorMessage.style.color = RED;
+        errorMessage.style.position = 'absolute';
+        errorMessage.append('Please, type less than 15 characters');
+        this.parentNode.append(errorMessage);
+
+        isMaxErrorVisible = true;
+      } else if (this.value.length < 15) {
+        const errorMessage = this.parentNode.querySelector('div');
+
+        if (errorMessage) {
+          this.style.removeProperty('outline-color');
+          this.style.removeProperty('border-color');
+          
+          errorMessage.remove();
+        }
+
+        isMaxErrorVisible = false;
+      }
+    }
+
+    const textFieldsMax = Array.from(document.querySelectorAll('.text-field-check-max'));
+    textFieldsMax.forEach(field => field.addEventListener('keydown', checkMaxCharacters));
+    textFieldsMax.forEach(field => field.addEventListener('keyup', checkMaxCharacters));
+    // Form Validation - check max characters 
+
+    
+    // Form Submit - check if it should make a POST or a PUT request 
+    const textFieldsRequired = Array.from(document.querySelectorAll('.text-field-check-required'));
+    
+    function handleSubmit(e) {
       e.preventDefault();
-      const blogId = blogForm.getAttribute('data-blog-id');
-     
-      if (blogId) {
-        const formValues = {};
-        formValues.id = blogId;
-        formValues.title = document.getElementById('title').value; //keys
-        formValues.abstract = document.getElementById('abstract').value;
-        formValues.blogBody = document.getElementById('blogBody').value;
-        formValues.imageAltText = document.getElementById('imageAltText').value;
+      
+      // Form Validation - check if required fields have been populated 
+      const fieldsLongerThanMaximum = textFieldsMax.some(field => field.value.length >= 15);
+      const fieldsNotFilled = textFieldsRequired.some(field => field.value.length === 0);
+  
+      if (fieldsNotFilled || fieldsLongerThanMaximum) {
+        alert('Please, fill out all the required fields and keep to the maximum number of characters to continue.');
+        return;
+      }
+      // /Form Validation - check if required fields have been populated 
 
-
-        fetch('/blogs', {
-          method: 'PUT',
-          headers: {
+      let fetchSettings = {
+        headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
-          },
+        }
+      };
+     
+      const formValues = {};
+      formValues.title = document.getElementById('title').value;
+      formValues.abstract = document.getElementById('abstract').value;
+      formValues.blogBody = document.getElementById('blogBody').value;
+      formValues.imageAltText = document.getElementById('imageAltText').value;
+
+      const blogId = blogForm.getAttribute('data-blog-id');
+
+      if (blogId) {
+        formValues.id = blogId;
+        
+        fetchSettings = {
+          ...fetchSettings,
+          method: 'PUT',
           body: JSON.stringify(formValues)
-        })
-          .then(response => {
-            if (response.status === 200) {
-              alert('Blogpost successfully edited!');
-              document.location.reload();
-            } else {
-              alert('An error has occurred. Please, try again later.');
-              throw new Error('An error has occurred. Please, try again later.');
-            }
-          })
-          .catch((err) => {
-            console.error(err);
-          });
-
-
+        };
       } else {
-        blogForm.setAttribute('method', 'POST');
-        blogForm.submit();
+        fetchSettings = {
+          ...fetchSettings,
+          method: 'POST',
+          body: JSON.stringify(formValues)
+        }
       }
-    });
+
+      fetch('/blogs', fetchSettings)
+        .then(response => {
+          if (response.status === 200) {
+            alert('Success!');
+            document.location.reload();
+          } else if((response.status === 403)) {
+            alert('Entered data is causing an error. Please check if you filled all required fields, and if the "title" and "abstract" fields have less than 15 characters each.');
+          } else {
+            alert('An error has occurred. Please, try again later.');
+            throw new Error('An error has occurred. Please, try again later.');
+          }
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    }
+
+    blogForm.addEventListener('submit', (e) => handleSubmit(e));
+    // Form Submit - check if it should make a POST or a PUT request 
   </script>
 <% } %>

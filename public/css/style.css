@@ -6,6 +6,7 @@
   --dark-green: #22a786;
   --grey: #e6e9ed;
   --black: #22272d;
+  --red: #ce0000;
   --light-blue: #add8e6;
   --dark-blue: #005c96;
   --heading-font: 'Roboto Slab', serif;
@@ -464,12 +465,13 @@ footer a:focus-visible {
 .modal-body {
   display: flex;
   flex-direction: column;
-  row-gap: 1rem;
+  row-gap: 2rem;
 }
 
 .formModal__input-container {
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 .formModal__input-container label {
@@ -477,6 +479,12 @@ footer a:focus-visible {
   font-weight: 500;
   width: -moz-fit-content;
   width: fit-content;
+}
+
+.formModal__input-container input,
+.formModal__input-container textarea {
+  border-radius: 0.25rem;
+  border: 0.1rem solid var(--black);
 }
 
 .modal-body h6 {
@@ -579,7 +587,7 @@ footer a:focus-visible {
 }
 
 .contact__container--crud h3 {
-  color: #ce0000;
+  color: var(--red);
   font-size: 2.4rem;
   font-weight: 700;
 }

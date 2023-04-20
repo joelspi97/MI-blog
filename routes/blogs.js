@@ -28,6 +28,11 @@ router.get('/', async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
+  const checkValues = [req.body.title, req.body.abstract ,req.body.blogBody];
+  if (checkValues.some(value => value === '') || req.body.title.length > 15 || req.body.abstract > 15) {
+    return res.status(403).end();
+  }
+
   const blog = new Blog({
     title: req.body.title,
     abstract: req.body.abstract,
@@ -44,6 +49,11 @@ router.post('/', async (req, res) => {
 });
 
 router.put('/', async (req, res) => {
+  const checkValues = [req.body.title, req.body.abstract ,req.body.blogBody];
+  if (checkValues.some(value => value === '') || req.body.title.length > 15 || req.body.abstract > 15) {
+    return res.status(403).end();
+  }
+  
   try {
     const updatedBlog = await Blog.findByIdAndUpdate(req.body.id, {
       title: req.body.title,
