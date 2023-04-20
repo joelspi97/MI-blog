@@ -15,19 +15,24 @@
   <section class="blogpost-list">
     <h3 id="blogpost-list__title">Latest blogposts</h3>
 
-    <% if (blogs.length> 0) { %>
-      <!-- Seach input -->
-      <form action="/blogs" method="GET" class="blogpost-list__search-bar">
-        <label for="search-input">Search for specific blogposts by title!</label>
-        <div class="blogpost-list__search-input-container">
-          <input type="text" id="search-input" />
-          <button class="project-continue-button" type="submit">Search 🔎</button>
-        </div>
-      </form>
-      <!-- /Seach input -->
+    <!-- Seach input -->
+    <% if (blogs.length > 0 || searchQuery) { %>
+    <form action="/blogs" method="GET" class="blogpost-list__search-bar">
+      <label for="search-input">Search for specific blogposts by title!</label>
+      <div class="blogpost-list__search-input-container">
+        <input type="text" id="search-input" name="search" value="<%= searchQuery %>" />
+        <button class="project-continue-button" type="submit">Search 🔎</button>
+      </div>
+    </form>
+    <% } %>
+    <!-- /Seach input -->
 
-
-      <!-- Blogposts list -->
+    <% if (blogs.length > 0 && searchQuery) { %>
+    <h4 class="mb-5 fs-3">Showing results for <i>"<%= searchQuery %>"</i>:</h4>
+    <% } %>
+    
+    <!-- Blogposts list -->
+    <% if (blogs.length > 0) { %>
       <div class="blogpost-list__blogs-container">
         <% blogs.forEach(blog=> { %>
           <article>
@@ -48,11 +53,17 @@
           <% }) %>
       </div>
       <% } %>
-        <!-- /Blogposts list -->
+      <!-- /Blogposts list -->
   </section>
 
-  <% if (blogs.length===0) { %>
-    <div class="blogs__no-items-yet">
+  <% if (blogs.length === 0 && searchQuery) { %>
+    <div class="blogs__no-items">
+      <b>We haven't found anything that contains <i>"<%= searchQuery %>"</i> in its title 🤔.</b>
+      <br />
+      Please, try with something else or <a class="project-simple-link" href="/blogs">click here</a> to show all blogposts again. 
+    </div>
+  <%} else if (blogs.length === 0) {%>
+    <div class="blogs__no-items">
       <b>There are no blogposts to show as of yet.</b>
       <br />
       Take the lead and make the first one! 😃

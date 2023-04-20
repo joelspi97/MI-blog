@@ -2,15 +2,32 @@ const express = require('express');
 const router = express.Router();
 const Blog = require('../models/blog');
 
+function escapeRegex(str) {
+  const regexChars = ['\\', '.', '*', '+', '?', '|', '(', ')', '[', ']', '{', '}', '^', '$'];
+
+  return str.split('').map(char => regexChars.includes(char) ? '\\' + char : char).join('');
+}
+
+
 router.get('/', async (req, res) => {
+  let searchOptions = {};
+  
+  if (req.query.search) {
+    const regexChars = ['\\', '.', '*', '+', '?', '|', '(', ')', '[', ']', '{', '}', '^', '$']; // Escape special characters for regex  
+    const userSearch = req.query.search.split('').map(char => regexChars.includes(char) ? '\\' + char : char).join('');
+    searchOptions.title = { $regex: userSearch, $options: "i" };
+  }
+
   try {
-    const blogs = await Blog.find({});
+    const blogs = await Blog.find(searchOptions);
     res.render('blogs/blogs', { 
       title: 'All blogs', 
       blogs, 
-      blog: { title: '', abstract: '', blogBody: '', imageAltText: '' }
+      blog: { title: '', abstract: '', blogBody: '', imageAltText: '' },
+      searchQuery: req.query.search 
     });
   } catch (error) {
+    console.log(error);
     res.redirect('/');
   }
 });
