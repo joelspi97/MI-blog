@@ -1,4 +1,4 @@
-<main class="selected-blog-main">
+<div class="selected-blog-main">
   <div class="selected-blog-main__back-link-container">
     <a class="project-simple-link" href="/blogs">⬅️ Go back to blogposts list</a>
   </div>
@@ -46,31 +46,29 @@
     </div>
   </section>
 
-  <div id="blog-id" class="visually-hidden" aria-hidden="true">
-    <%= blog.id %>
-  </div>
+  <div id="blog-id" class="visually-hidden" aria-hidden="true"><%= blog.id %></div>
+</div>
 
-  <script>
-    const blogId = document.getElementById('blog-id').innerText;
+<script>
+  const blogId = document.getElementById('blog-id').innerText;
 
-    async function deleteBlog() {
-      if (confirm('Are you sure you want to delete this blogpost?')) {
-        try {
-          await fetch(`/blogs/${blogId}`, { method: 'DELETE' });
-          window.location.href = '/blogs?success=Blogpost+successfully+deleted';
-        } catch (err) {
-          console.error(err);
-        }
-      }
-    }
-
-    async function copyUrl() {
+  async function deleteBlog() {
+    if (confirm('Are you sure you want to delete this blogpost?')) {
       try {
-        await navigator.clipboard.writeText(window.location.href);
-        alert('Link copied successfully!');
+        await fetch(`/blogs/${blogId}`, { method: 'DELETE' });
+        window.location.href = '/blogs?success=Blogpost+successfully+deleted';
       } catch (err) {
         console.error(err);
       }
     }
-  </script>
-</main>
+  }
+
+  async function copyUrl() {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      alert('Link copied successfully!');
+    } catch (err) {
+      console.error(err);
+    }
+  }
+</script>

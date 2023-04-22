@@ -1,4 +1,4 @@
-<main class="blogs-main">
+<div class="blogs-main">
   <section class="hero-section">
     <div class="hero-section__container project-container">
       <img class="hero-section__image" src="/assets/img/post-3.png" alt="Close up picture of the hands of a person typing on a laptop.">
@@ -28,7 +28,7 @@
     <!-- /Seach input -->
 
     <% if (blogs.length > 0 && searchQuery) { %>
-    <h4 class="mb-5 fs-3">Showing results for <i>"<%= searchQuery %>"</i>:</h4>
+    <h4 class="mb-5 fs-3">Showing results for <i>"<%= searchQuery %>"</i> :</h4>
     <% } %>
     
     <!-- Blogposts list -->
@@ -68,8 +68,8 @@
       <br />
       Take the lead and make the first one! 😃
     </div>
-    <% } %>
-</main>
+  <% } %>
+</div>
 
 <script>
   function onLoad() {
