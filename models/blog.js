@@ -13,13 +13,23 @@ const blogSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  imageUrl: {
+  blogImage: {
+    type: Buffer,
+    required: false
+  },
+  blogImageType: {
     type: String,
     required: false
   },
-  imageAltText: {
+  blogImageAltText: {
     type: String,
     required: false
+  }
+});
+
+blogSchema.virtual('blogImagePath').get(function() {
+  if (this.blogImage != null && this.blogImageType != null) {
+    return `data:${this.blogImageType};charset=utf-8;base64,${this.blogImage.toString('base64')}`
   }
 });
 

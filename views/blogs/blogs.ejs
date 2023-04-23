@@ -36,21 +36,16 @@
       <div class="blogpost-list__blogs-container">
         <% blogs.forEach(blog=> { %>
           <article>
-            <% if (blog.imageUrl !=null) { %>
-              <img src="/assets/img/<%= blog.imageUrl %>" alt="<%= blog.imageAltText %>">
-              <% } else { %>
-                <img src="/assets/img/no-preview.svg" alt="">
-                <% } %>
-                  <h3>
-                    <%= blog.title %>
-                  </h3>
-                  <p>
-                    <%= blog.abstract %>
-                  </p>
-                  <a class="project-button" href="blogs/<%= blog.id %>">Read more <span class="sr-only">about <%=
-                        blog.title %></span></a>
+            <% if (blog.blogImagePath !=null) { %>
+              <img src="<%= blog.blogImagePath %>" alt="<%= blog.blogImageAltText %>">
+            <% } else { %>
+              <img src="/assets/img/no-preview.svg" alt="">
+            <% } %>
+            <h3><%= blog.title %></h3>
+            <p><%= blog.abstract %></p>
+            <a class="project-button" href="blogs/<%= blog.id %>">Read more <span class="sr-only">about <%= blog.title %></span></a>
           </article>
-          <% }) %>
+        <% }) %>
       </div>
       <% } %>
       <!-- /Blogposts list -->

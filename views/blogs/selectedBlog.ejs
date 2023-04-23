@@ -10,8 +10,8 @@
     </div>
 
     <div class="selected-blog__image-container">
-      <% if (locals.blog.imageUrl !=null) { %>
-        <img src="/assets/img/<%= blog.imageUrl %>" alt="<%= blog.imageAltText %>">
+      <% if (locals.blog.blogImagePath !=null) { %>
+        <img src="<%= blog.blogImagePath %>" alt="<%= blog.blogImageAltText %>">
       <% } else { %>
         <img src="/assets/img/no-preview.svg" alt="">
       <% } %>

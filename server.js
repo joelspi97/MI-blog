@@ -9,6 +9,7 @@ const app = express();
 const expressLayouts = require('express-ejs-layouts');
 const favicon = require('express-favicon');
 const bodyParser = require('body-parser');
+const methodOverride = require('method-override');
 const blogsRouter = require('./routes/blogs.js');
 const indexRouter = require('./routes/index.js');
 const aboutMeRouter = require('./routes/about-me.js');
@@ -26,6 +27,7 @@ app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(expressLayouts);
 app.use(bodyParser.urlencoded({ limit: '10mb', extended: false }));
 app.use(express.json());
+app.use(methodOverride('_method'));
 // /Middleware 
 
 // Routes 
