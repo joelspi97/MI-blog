@@ -36,9 +36,15 @@
   flex: 1;
 }
 
+.selected-blog__image-container {
+  align-items: center;
+  display: flex;
+  max-height: 50vh;
+}
+
 .selected-blog__image-container img {
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   width: 100%;
 }
 

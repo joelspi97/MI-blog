@@ -17,4 +17,6 @@ To build it I used:
 * HTML5
 * CSS3
 
+To run this project, I used Node v16.15.1 and npm v8.11.0. 
+
 I don't claim ownership for any of the images used on it.

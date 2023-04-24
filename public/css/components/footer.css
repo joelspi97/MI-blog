@@ -26,7 +26,7 @@ footer a:focus-visible {
   outline-color: var(--grey);
 }
 
-@media (max-width: 399px) {
+@media (max-width: 415px) {
   footer {
     padding-bottom: 0.75rem;
     padding-top: 1.25rem;

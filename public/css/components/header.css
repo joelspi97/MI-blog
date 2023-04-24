@@ -52,7 +52,7 @@ nav {
   width: 50%;
 }
 
-@media (max-width: 399px) {
+@media (max-width: 415px) {
   nav {
     justify-content: center;
     padding-top: 2rem;
