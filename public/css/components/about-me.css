@@ -1,5 +1,6 @@
 #profile-picture.about-me__picture {
-  object-position: center;
+  -o-object-position: center;
+     object-position: center;
   width: 80%;
 }
 

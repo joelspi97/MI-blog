@@ -64,6 +64,7 @@
   font-size: 1.6rem;
   font-weight: 500;
   width: -moz-fit-content;
+  width: -webkit-fit-content;
   width: fit-content;
 }
 
@@ -100,7 +101,8 @@
 .filepond--root .filepond--label-action:hover {
   border-radius: 0.4rem;
   color: #005388;
-  text-decoration-color: #005388;
+  -webkit-text-decoration-color: #005388;
+          text-decoration-color: #005388;
 }
 
 .filepond--root .filepond--label-action:focus-visible {
@@ -126,7 +128,8 @@
 }
 
 .modal-footer {
-  column-gap: 13rem;
+  -moz-column-gap: 13rem;
+       column-gap: 13rem;
   justify-content: space-between;
   row-gap: 1.5rem;
 }

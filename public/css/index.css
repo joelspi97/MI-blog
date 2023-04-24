@@ -122,7 +122,8 @@ textarea:focus-visible {
 .project-simple-link:focus-visible,
 .project-simple-link:hover {
   color: var(--dark-blue);
-  text-decoration-color: var(--dark-blue);
+  -webkit-text-decoration-color: var(--dark-blue);
+          text-decoration-color: var(--dark-blue);
 }
 
 /* Project button */
@@ -143,7 +144,8 @@ textarea:focus-visible {
   background-color: white;
   border-color: var(--dark-blue);
   color: var(--dark-blue);
-  text-decoration-color: var(--dark-blue);
+  -webkit-text-decoration-color: var(--dark-blue);
+          text-decoration-color: var(--dark-blue);
 }
 /* /Project button */
 
@@ -205,7 +207,8 @@ textarea:focus-visible {
 .skip-link a:focus-visible,
 .skip-link a:hover {
   color: var(--light-blue);
-  text-decoration-color: var(--light-blue);
+  -webkit-text-decoration-color: var(--light-blue);
+          text-decoration-color: var(--light-blue);
 }
 /* /Skip link */
 
@@ -220,7 +223,8 @@ textarea:focus-visible {
 
 .hero-section__container {
   align-items: center;
-  column-gap: 6rem;
+  -moz-column-gap: 6rem;
+       column-gap: 6rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
   justify-items: center;
@@ -229,8 +233,10 @@ textarea:focus-visible {
 
 .hero-section__image {
   height: 100%;
-  object-fit: cover;
-  object-position: bottom;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: bottom;
+     object-position: bottom;
   width: 100%;
 }
 
