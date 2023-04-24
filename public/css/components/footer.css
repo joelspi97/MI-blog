@@ -1,0 +1,34 @@
+footer {
+  align-items: center;
+  background-color: var(--black);
+  border-top: 0.5rem solid var(--green);
+  color: white;
+  display: flex;
+  font-family: var(--secondary-font);
+  justify-content: center;
+  margin-top: auto;
+  padding: 0.5rem 2.5rem 0;
+  text-align: center;
+  width: 100%;
+}
+
+footer a {
+  color: var(--green);
+  display: inline-flex;
+}
+
+footer a:hover {
+  color: var(--light-blue);
+}
+
+footer a:focus-visible {
+  color: #add8e6;
+  outline-color: var(--grey);
+}
+
+@media (max-width: 399px) {
+  footer {
+    padding-bottom: 0.75rem;
+    padding-top: 1.25rem;
+  }
+}

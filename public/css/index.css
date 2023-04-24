@@ -1,0 +1,265 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&family=Roboto+Slab:wght@400;700&family=Roboto:wght@400;500;700;900&display=swap');
+@import url('./components/header.css');
+@import url('./components/home.css');
+@import url('./components/footer.css');
+@import url('./components/about-me.css');
+@import url('./components/blogs.css');
+@import url('./components/form-modal.css');
+@import url('./components/selected-blog.css');
+
+/* This file contain global styles, variables, generic classes and imports all other css files */
+
+/* Variables */
+:root {
+  --green: #48cfad;
+  --dark-green: #22a786;
+  --grey: #e6e9ed;
+  --black: #22272d;
+  --red: #ce0000;
+  --light-blue: #add8e6;
+  --dark-blue: #005c96;
+  --heading-font: 'Roboto Slab', serif;
+  --primary-font: 'Roboto', sans-serif;
+  --secondary-font: 'Roboto Mono', monospace;
+}
+/* /Variables */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+a,
+button {
+  color: inherit;
+  transition: color 0.12s ease-in-out,
+              background-color 0.12s ease-in-out,
+              border-color 0.12s ease-in-out,
+              outline 0.075s ease-in-out;
+}
+
+a:focus-visible,
+button:focus-visible {
+  border-radius: 0.4rem;
+  outline: 0.2rem solid var(--black);
+  outline-offset: 0.4rem;
+}
+
+html {
+  font-size: 62.5%;
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.5rem;
+  font-family: var(--primary-font);
+  min-height: 100%;
+}
+
+main {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--heading-font);
+}
+
+.project-container {
+  margin: auto;
+  max-width: 110rem;
+}
+
+.sr-only {
+  border: 0 !important;
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px !important;
+  overflow: hidden;
+  padding: 0 !important;
+  position: absolute !important;
+  white-space: nowrap;
+  width: 1px !important;
+}
+
+/* Inputs and text areas */
+textarea {
+  resize: none;
+}
+
+input,
+textarea {
+  font-size: 1.6rem;
+  padding: 0 0.4rem;
+  transition: outline 0.075s ease-in-out;
+}
+
+input:focus-visible,
+textarea:focus-visible {
+  outline: 0.125rem solid var(--dark-green);
+}
+/* /Inputs and text areas */
+
+/* Project simple link */
+.project-simple-link {
+  display: inline-block;
+  font-size: 1.6rem;
+  font-weight: 500;
+  padding: 0.5rem;
+  text-decoration: underline;
+  white-space: nowrap;
+}
+/* /Project simple link */
+
+.project-simple-link:focus,
+.project-simple-link:hover {
+  color: var(--dark-blue);
+  text-decoration-color: var(--dark-blue);
+}
+
+/* Project button */
+.project-button {
+  background-color: white;
+  border: 0.2rem solid var(--dark-green);
+  border-radius: 0.2rem;
+  color: var(--black);
+  font-size: 1.6rem;
+  text-decoration: underline;
+  padding: 1rem;
+  white-space: nowrap;
+}
+ 
+.project-button:hover,
+.project-button:active,
+.project-button:focus-visible {
+  background-color: white;
+  border-color: var(--dark-blue);
+  color: var(--dark-blue);
+  text-decoration-color: var(--dark-blue);
+}
+/* /Project button */
+
+/* Project continue button */
+.project-continue-button {
+  background-color: var(--green);
+  border-color: var(--green);
+  border-radius: 0.25rem;
+  font-family: var(--secondary-font);
+  font-size: 1.6rem;
+  font-weight: bold;
+  padding: 1rem;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.project-continue-button:hover,
+.project-continue-button:focus-visible {
+  background-color: #ffffff;
+  color: var(--dark-blue);
+}
+
+.project-continue-button:focus-visible {
+  outline-color: #ffffff;
+}
+/* /Project continue button */
+
+/* Skip link */
+.skip-link {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  width: 100%;
+}
+
+.skip-link:focus-within {
+  opacity: 1;
+}
+
+.skip-link__link-container {
+  background-color: var(--black);
+  border-radius: 0.25rem;
+  padding: 0.8rem 1.5rem;
+  text-align: center;
+}
+
+.skip-link a {
+  color: var(--grey);
+}
+
+.skip-link a:focus-visible {
+  outline-color: var(--light-blue);
+  outline-offset: 0.1rem;
+}
+
+.skip-link a:focus-visible,
+.skip-link a:hover {
+  color: var(--light-blue);
+  text-decoration-color: var(--light-blue);
+}
+/* /Skip link */
+
+/* Hero section */
+.hero-section {
+  background-color: var(--grey);
+  font-size: 1.7rem;
+  margin-bottom: 2rem;
+  padding: 3rem 5rem;
+  width: 100%;
+}
+
+.hero-section__container {
+  align-items: center;
+  column-gap: 6rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  row-gap: 2rem;
+}
+
+.hero-section__image {
+  height: 100%;
+  object-fit: cover;
+  object-position: bottom;
+  width: 100%;
+}
+
+.hero-section__text-container p {
+  margin: 2rem 0 3rem;
+}
+
+@media (max-width: 800px) {
+  .hero-section__container {
+    grid-template-columns: 1fr;
+  }
+  
+  .hero-section__image {
+    max-height: 30rem;
+  }
+  
+  .hero-section__text-container {
+    text-align: center;
+  }
+  
+  .hero-section__right {
+    padding-left: 0;
+  }
+}
+
+@media (max-width: 520px) {
+  .hero-section {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+}
+/* /Hero section */
