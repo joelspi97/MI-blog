@@ -23,4 +23,4 @@ To build it, I used Node v16.15.1 and npm v8.11.0.
 1. npm install 
 2. npm run devStart 
 
-I don't claim ownership for any of the images used on it.
+I don't claim ownership for any of the images used on it (beside the ones that include myself in them).
