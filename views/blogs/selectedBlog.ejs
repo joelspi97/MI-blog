@@ -55,10 +55,11 @@
   async function deleteBlog() {
     if (confirm('Are you sure you want to delete this blogpost?')) {
       try {
-        await fetch(`/blogs/${blogId}`, { method: 'DELETE' });
+        await fetch(`/selected-blog/${blogId}`, { method: 'DELETE' });
         window.location.href = '/blogs?success=Blogpost+successfully+deleted';
       } catch (err) {
         console.error(err);
+        alert('There was an error when trying to delete this blogpost. Please, try again later.');
       }
     }
   }

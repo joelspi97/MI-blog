@@ -10,8 +10,10 @@ const expressLayouts = require('express-ejs-layouts');
 const favicon = require('express-favicon');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
-const blogsRouter = require('./routes/blogs.js');
+
 const indexRouter = require('./routes/index.js');
+const blogsRouter = require('./routes/blogs.js');
+const selectedBlogRouter = require('./routes/selected-blog.js');
 const aboutMeRouter = require('./routes/about-me.js');
 // /Imports 
 
@@ -33,6 +35,7 @@ app.use(methodOverride('_method'));
 // Routes 
 app.use('/', indexRouter);
 app.use('/blogs', blogsRouter);
+app.use('/selected-blog', selectedBlogRouter);
 app.use('/about-me', aboutMeRouter);
 app.use((req, res) => {
   res.status(404);
