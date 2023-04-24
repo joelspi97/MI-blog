@@ -119,7 +119,7 @@ textarea:focus-visible {
 }
 /* /Project simple link */
 
-.project-simple-link:focus,
+.project-simple-link:focus-visible,
 .project-simple-link:hover {
   color: var(--dark-blue);
   text-decoration-color: var(--dark-blue);
