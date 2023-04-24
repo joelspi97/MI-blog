@@ -17,6 +17,10 @@ To build it I used:
 * HTML5
 * CSS3
 
-To run this project, I used Node v16.15.1 and npm v8.11.0. 
+## In case you want to run this project in your local environment:
+To build it, I used Node v16.15.1 and npm v8.11.0. 
+
+1. npm install 
+2. npm run devStart 
 
 I don't claim ownership for any of the images used on it.
