@@ -533,6 +533,10 @@ footer a:focus-visible {
   width: fit-content;
 }
 
+.formModal__input-container i {
+  font-weight: 400;
+}
+
 .formModal__input-container input,
 .formModal__input-container textarea {
   border-radius: 0.25rem;
@@ -552,6 +556,13 @@ footer a:focus-visible {
 
 .modal__button {
   flex: 1 1 14rem;
+}
+
+#submit-button[aria-disabled] {
+  background-color: var(--grey);
+  border-color: var(--grey);
+  cursor: default;
+  pointer-events: none;
 }
 
 .modal__button.project-continue-button:hover,

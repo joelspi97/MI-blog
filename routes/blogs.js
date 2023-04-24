@@ -44,7 +44,7 @@ router.post('/', async (req, res) => {
     blogImageAltText: req.body.blogImageAltText
   });
 
-  if (req.body.blogImage != null && req.body.blogImage !== '' && !req.body.blogImage.every(element => element === '')) {
+  if (req.body.blogImage != null && req.body.blogImage !== '' && !Array.isArray(req.body.blogImage)) {
     saveImage(blog, req.body.blogImage);
   }
 
@@ -77,7 +77,7 @@ router.put('/', async (req, res) => {
     updatedBlog.blogBody = req.body.blogBody;
     updatedBlog.blogImageAltText = req.body.blogImageAltText;
 
-    if (req.body.blogImage != null && req.body.blogImage !== '' && !req.body.blogImage.every(element => element === '')) {
+    if (req.body.blogImage != null && req.body.blogImage !== '' && !Array.isArray(req.body.blogImage)) {
       saveImage(updatedBlog, req.body.blogImage);
     }
 
