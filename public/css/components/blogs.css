@@ -67,7 +67,15 @@
   word-wrap: break-word;
 }
 
+.blogpost-list__image-container {
+  align-items: center;
+  display: flex;
+  flex: 1;
+  max-height: 50%;
+}
+
 .blogpost-list__image-container img {
+  object-fit: contain;
   height: 100%;
   width: 100%;
 }

@@ -1,6 +1,8 @@
 # MI Blog
 This is a project made just for fun and practice.
 
+MI Blog is a website in which you can create your own blogposts. It follows an anonymous "free for all" format, which means that you can delete or edit other user's posts, and they could to the same with yours! 
+
 It features:
 * A CRUD system, to allow users interact with a database.
 * A form with validation logic, to avoid sending incorrect data to the database. 
