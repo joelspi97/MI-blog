@@ -48,8 +48,8 @@
 
 .selected-blog__image-container img {
   height: 100%;
-  -o-object-fit: contain;
-     object-fit: contain;
+  -o-object-fit: scale-down;
+     object-fit: scale-down;
   width: 100%;
 }
 
