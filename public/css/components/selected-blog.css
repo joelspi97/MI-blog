@@ -55,7 +55,8 @@
 
 .selected-blog__image-container .default {
   height: 75%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   width: 75%;
 }
 
