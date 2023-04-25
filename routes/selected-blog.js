@@ -7,7 +7,7 @@ const saveImage = require('../utils/saveImage');
 router.put('/', async (req, res) => {
   // Validate if inputs were filled correctly 
   const checkValues = [req.body.title, req.body.abstract ,req.body.blogBody];
-  if (checkValues.some(value => value === '') || req.body.title.length > 15 || req.body.abstract > 15) {
+  if (checkValues.some(value => value === '') || req.body.title.length > 35 || req.body.abstract > 35) {
     return res.status(403).end();
   }
   // /Validate if inputs were filled correctly 

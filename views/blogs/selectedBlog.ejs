@@ -10,10 +10,10 @@
     </div>
 
     <div class="selected-blog__image-container">
-      <% if (locals.blog.blogImagePath !=null) { %>
+      <% if (locals.blog.blogImagePath != null) { %>
         <img src="<%= blog.blogImagePath %>" alt="<%= blog.blogImageAltText %>">
       <% } else { %>
-        <img src="/assets/no-preview.svg" alt="">
+        <img class="default" src="/assets/no-preview.svg" alt="">
       <% } %>
     </div>
   </section>

@@ -51,4 +51,5 @@ db.on('error', err => console.error(err));
 db.once('open', () => console.log('Connected to Mongoose'));
 // /Database connection 
 
-app.listen(process.env.PORT || 3000);
+const port = process.env.PORT || 3000;
+app.listen(port, () => console.log(`Server now listening on port ${port}`));

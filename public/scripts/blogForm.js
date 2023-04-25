@@ -23,7 +23,7 @@
   let isMaxErrorVisible = false;
   
   function checkMaxCharacters() {
-    if (this.value.length >= 15 && !isMaxErrorVisible) { // Create error sign 
+    if (this.value.length >= 35 && !isMaxErrorVisible) { // Create error sign 
       const RED = '#b50000';
   
       this.style.borderColor = RED;
@@ -34,11 +34,11 @@
       errorMessage.style.bottom = '-2rem';
       errorMessage.style.color = RED;
       errorMessage.style.position = 'absolute';
-      errorMessage.append('Please, type less than 15 characters');
+      errorMessage.append('Please, type less than 35 characters');
       this.parentNode.append(errorMessage);
   
       isMaxErrorVisible = true;
-    } else if (this.value.length < 15) { // Remove error sign 
+    } else if (this.value.length < 35) { // Remove error sign 
       const errorMessage = this.parentNode.querySelector('div');
   
       if (errorMessage) {
@@ -70,7 +70,7 @@
     }
     
     // Check if required fields have been populated  
-    const fieldsLongerThanMaximum = textFieldsMax.some(field => field.value.length >= 15);
+    const fieldsLongerThanMaximum = textFieldsMax.some(field => field.value.length >= 35);
     const fieldsNotFilled = textFieldsRequired.some(field => field.value.length === 0);
   
     if (fieldsNotFilled || fieldsLongerThanMaximum) {

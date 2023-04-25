@@ -17,6 +17,10 @@ To build it I used:
 * HTML5
 * CSS3
 
+## Screenshots
+![Screenshot of M.I. Blog 1 of 2. Showing how a blogpost, with a lorem ipsum body and a placeholder image.](/assets/screenshot1.png)
+![Screenshot of M.I. Blog 2 of 2. Showing the form modal users would fill to create a new blogpost.](/assets/screenshot2.png)
+
 ## In case you want to run this project in your local environment:
 To build it, I used Node v16.15.1 and npm v8.11.0. 
 
