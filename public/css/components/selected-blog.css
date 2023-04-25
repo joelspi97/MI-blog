@@ -44,17 +44,12 @@
   display: flex;
   margin-bottom: auto;
   max-height: 60vh;
+  overflow: hidden;
 }
 
 .selected-blog__image-container img {
-  height: 100%;
-  -o-object-fit: scale-down;
-     object-fit: scale-down;
-  width: 100%;
-}
-
-.selected-blog__image-container .default {
   height: 75%;
+  margin: 0 auto;
   -o-object-fit: cover;
      object-fit: cover;
   width: 75%;
@@ -153,7 +148,7 @@
     margin: 0 auto;
   } 
 
-  .selected-blog__image-container .default {
+  .selected-blog__image-container img {
     height: 100%;
     width: 100%;
   }
