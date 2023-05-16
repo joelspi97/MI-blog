@@ -11,6 +11,16 @@ async function editSelectedBlog(req, res) {
           blogImageAltText,
           id } = req.body;
 
+  // Validate id 
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(400).render('error', { 
+      title: 'Bad request',
+      errorCode: '400',
+      errorMessage: "The provided blogpost ID is not valid." 
+    });
+  }
+  // /Validate id 
+
   // Validate if inputs were filled correctly 
   const checkValues = [title, abstract, blogBody];
   if (checkValues.some(value => value === '') || title.length > 35 || abstract > 35) {
@@ -64,7 +74,7 @@ async function getSelectedBlog(req, res) {
     return res.status(400).render('error', { 
       title: 'Bad request',
       errorCode: '400',
-      errorMessage: "The provided ID is not valid." 
+      errorMessage: "The provided blogpost ID is not valid." 
     });
   }
   // /Validate id 
@@ -103,7 +113,7 @@ async function deleteSelectedBlog(req, res) {
     return res.status(400).render('error', { 
       title: 'Bad request',
       errorCode: '400',
-      errorMessage: "The provided ID is not valid." 
+      errorMessage: "The provided blogpost ID is not valid." 
     });
   }
   // /Validate id 
