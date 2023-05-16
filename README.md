@@ -25,9 +25,9 @@ To build this project I used Node v16.15.1 and npm v8.11.0, so it's also advisab
 Follow these steps: 
 1. Open the project on your preferred code editor. 
 2. Run the following command: **npm install** 
-3. Create a file called .env and inside of it declare the following environment variables: 
-  i. DATABASE_URL=(insert here the url to your local mongo database)
-  ii. PORT=(insert here the port number in which you want to run the project)
+3. Create a file called **.env** and inside of it declare the following environment variables: 
+  1. **DATABASE_URL**=insert_here_the_url_to_your_local_mongo_database
+  2. **PORT**=insert_here_the_port_number_in_which_you_want_to_run_the_project
 4. Run a local server using this command: **npm run devStart** 
 5. Open a browser and go to http://localhost:PORT-YOU-SELECTED
 
