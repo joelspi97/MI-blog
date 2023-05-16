@@ -14,7 +14,11 @@ async function editSelectedBlog(req, res) {
   // Validate if inputs were filled correctly 
   const checkValues = [title, abstract, blogBody];
   if (checkValues.some(value => value === '') || title.length > 35 || abstract > 35) {
-    return res.status(403).end();
+    return res.status(400).render('error', { 
+      title: 'Bad request',
+      errorCode: '400',
+      errorMessage: 'Please fill in all the required fields, keep to the maximum of characters and then try again.' 
+    });
   }
   // /Validate if inputs were filled correctly 
 
@@ -23,7 +27,11 @@ async function editSelectedBlog(req, res) {
 
     // In case the id wasn't found
     if (!updatedBlog) {
-      return res.redirect('/page-not-found');
+      return res.status(404).render('error', { 
+        title: 'Blog not found',
+        errorCode: '404',
+        errorMessage: "It seems like the blogpost you were trying to edit doesn't exist anymore." 
+      });
     }
     
     updatedBlog.title = title;
@@ -38,8 +46,11 @@ async function editSelectedBlog(req, res) {
     await updatedBlog.save(); 
     res.status(200).redirect(`selected-blog/${updatedBlog.id}`);
   } catch (err) {
-    console.error(err);
-    res.status(500).end();
+    return res.status(500).render('error', { 
+      title: 'Server error',
+      errorCode: '500',
+      errorMessage: 'An error has occurred on the server. Please, try again later.' 
+    });
   }
 }
 // /Edit selected blog 
@@ -50,20 +61,35 @@ async function getSelectedBlog(req, res) {
 
   // Validate id 
   if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.redirect('/page-not-found');
+    return res.status(400).render('error', { 
+      title: 'Bad request',
+      errorCode: '400',
+      errorMessage: "The provided ID is not valid." 
+    });
   }
   // /Validate id 
 
   try {
     const selectedBlog = await Blog.findById(id);
 
+    if (!selectedBlog) {
+      return res.status(404).render('error', { 
+        title: 'Blog not found',
+        errorCode: '404',
+        errorMessage: "We couldn't find the blogpost you were looking for." 
+      });
+    }
+
     res.render('blogs/selectedBlog', { 
       title: selectedBlog.title, 
       blog: selectedBlog
     });
   } catch (err) {
-    console.error(err);
-    res.redirect('/page-not-found');
+    return res.status(500).render('error', { 
+      title: 'Server error',
+      errorCode: '500',
+      errorMessage: 'An error has occurred on the server. Please, try again later.' 
+    });
   }
 }
 // /Get selected blog 
@@ -74,7 +100,11 @@ async function deleteSelectedBlog(req, res) {
 
   // Validate id 
   if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.redirect('/page-not-found');
+    return res.status(400).render('error', { 
+      title: 'Bad request',
+      errorCode: '400',
+      errorMessage: "The provided ID is not valid." 
+    });
   }
   // /Validate id 
 
@@ -82,8 +112,11 @@ async function deleteSelectedBlog(req, res) {
     await Blog.findByIdAndDelete(id);
     res.status(200).end();
   } catch (err) {
-    console.error(err);
-    res.status(500).end();
+    return res.status(500).render('error', { 
+      title: 'Server error',
+      errorCode: '500',
+      errorMessage: 'An error has occurred on the server. Please, try again later.' 
+    });
   }
 }
 // /Delete selected blog 
