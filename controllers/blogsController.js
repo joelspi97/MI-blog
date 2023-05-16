@@ -23,8 +23,11 @@ async function getAllBlogs(req, res) {
       searchQuery: search
     });
   } catch (err) {
-    console.error(err);
-    res.redirect('/');
+    res.status(500).render('error', { 
+      title: 'Server error',
+      errorCode: '500',
+      errorMessage: 'An error has occurred on the server. Please, try again later.' 
+    });
   }
 }
 // Get all blogs
@@ -40,7 +43,11 @@ async function createBlog(req, res) {
   // Validate if inputs were filled correctly
   const checkValues = [title, abstract, blogBody];
   if (checkValues.some(value => value === '') || title.length > 35 || abstract > 35) {
-    return res.status(403).end();
+    return res.status(400).render('error', { 
+      title: 'Bad request',
+      errorCode: '400',
+      errorMessage: 'Please fill in all the required fields, keep to the maximum of characters and then try again.' 
+    });
   }
   // /Validate if inputs were filled correctly
 
@@ -52,7 +59,11 @@ async function createBlog(req, res) {
   });
 
   if (!blog) {
-    return res.status(500).end();
+    return res.status(500).render('error', { 
+      title: 'Server error',
+      errorCode: '500',
+      errorMessage: 'An error has occurred on the server. Please, try again later.' 
+    });
   }
 
   if (blogImage != null && blogImage !== '' && !Array.isArray(blogImage)) {
@@ -63,8 +74,11 @@ async function createBlog(req, res) {
     const newBlog = await blog.save();
     res.redirect(`selected-blog/${newBlog.id}`);
   } catch (err) {
-    console.error(err);
-    res.redirect('blogs');
+    res.status(500).render('error', { 
+      title: 'Server error',
+      errorCode: '500',
+      errorMessage: 'An error has occurred on the server. Please, try again later.' 
+    });
   }
 }
 // /Create a blog

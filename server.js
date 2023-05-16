@@ -39,8 +39,11 @@ app.use('/blogs', blogsRouter);
 app.use('/selected-blog', selectedBlogRouter);
 app.use('/about-me', aboutMeRouter);
 app.use((req, res) => {
-  res.status(404);
-  res.render('page-not-found', { title: 'Page Not Found' });
+  res.status(404).render('error', { 
+    title: 'Page Not Found',
+    errorCode: '404',
+    errorMessage: "We couldn't find the page you were looking for." 
+  });
 });
 // /Routes
 
