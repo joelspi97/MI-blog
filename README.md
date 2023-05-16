@@ -18,10 +18,18 @@ MI Blog is a website in which you can create your own blogposts. It follows an a
 * CSS3
 
 ## In case you want to run this project in your local environment:
-To build it, I used Node v16.15.1 and npm v8.11.0. 
+You need to have both node and npm installed on your computer. I recommend installing them by using the [Node Version Manager](https://github.com/nvm-sh/nvm) (nvm), otherwise you can download them from [here](https://nodejs.org/en). 
 
-1. npm install 
-2. npm run devStart 
+To build this project I used Node v16.15.1 and npm v8.11.0, so it's also advisable that you use the same versions. 
+
+Follow these steps: 
+1. Open the project on your preferred code editor. 
+2. Run the following command: **npm install** 
+3. Create a file called .env and inside of it declare the following environment variables: 
+  i. DATABASE_URL=(insert here the url to your local mongo database)
+  ii. PORT=(insert here the port number in which you want to run the project)
+4. Run a local server using this command: **npm run devStart** 
+5. Open a browser and go to http://localhost:PORT-YOU-SELECTED
 
 ## Screenshots
 ![Screenshot of M.I. Blog 1 of 2. Showing the form modal users would fill to create a new blogpost.](./public/assets/screenshot1.png)
