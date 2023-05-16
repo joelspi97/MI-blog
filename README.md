@@ -33,6 +33,7 @@ Follow these steps:
 
 ## Screenshots
 ![Screenshot of M.I. Blog 1 of 2. Showing the form modal users would fill to create a new blogpost.](./public/assets/screenshot1.png)
+
 ![Screenshot of M.I. Blog 2 of 2. Showing how a blogpost, with a lorem ipsum body and a placeholder image.](./public/assets/screenshot2.png)
 
 _I don't claim ownership for any of the images used on this project (beside the ones that include myself in them)._
