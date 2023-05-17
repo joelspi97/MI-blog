@@ -17,6 +17,8 @@ MI Blog is a website in which you can create your own blogposts. It follows an a
 * HTML5
 * CSS3
 
+## Production URL: https://mi-blog-s6m5.onrender.com/
+
 ## In case you want to run this project in your local environment:
 You need to have both node and npm installed on your computer. I recommend installing them by using the [Node Version Manager](https://github.com/nvm-sh/nvm) (nvm), otherwise you can download them from [here](https://nodejs.org/en). 
 
